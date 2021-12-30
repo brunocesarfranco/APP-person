@@ -1,0 +1,34 @@
+
+<div class="di">
+  <form [formGroup]="form" >
+    <div class="span">
+      <label>Novo usuário:</label>
+      <input formControlName='nome'>
+      <div class="center paddingtop-lg">
+        <button (click)="criar(person)">Inserir</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div *ngFor="let person of lista; let i = index" class="div" [ngClass] = "{'teste': currenteditindex == i}">
+  <div class="span">
+    <span>Nome:</span><span>{{person?.name}}</span>
+  </div>
+  <div class="span">
+    <span >Id:</span><span>{{person?.businessEntityId}}</span>
+  </div>
+  <button (click)="delete(person)">delete</button>
+  <button (click)="testee(i)">Editar</button>
+  <br>
+  <form [formGroup]="form" >
+    <div class="span" *ngIf="currenteditindex == i">
+      <label>Novo Nome:</label>
+      <input formControlName='nome'>
+      <div class="center paddingtop-sm"> 
+        <button (click)="Editar(person, i)">Salvar</button>
+      </div>
+      
+    </div>
+  </form>
+  
+</div>
